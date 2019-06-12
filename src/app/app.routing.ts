@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 const APP_ROUTES: Routes = [
     {path: '', component:MapComponent},
     {path: 'hondenloop', component:HondenloopComponent},
-    {path:'zitmeubilair', component:ZitmeubilairComponent}
+    {path: 'zitmeubilair', component:ZitmeubilairComponent}
 ];
 
 @NgModule({
@@ -16,5 +16,5 @@ const APP_ROUTES: Routes = [
 })
 
 export class AppRoutingModule{
-    
+
 }

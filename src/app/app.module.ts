@@ -11,7 +11,7 @@ import { ZitmeubilairService } from './services/zitmeubilair.service';
 import { HondenloopService } from './services/hondenloop.service';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSortModule, MatTableModule, MatPaginatorModule } from '@angular/material';
+import { MatSortModule, MatTableModule, MatPaginatorModule, MatToolbarModule, MatSidenav, MatSidenavModule } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 const appRoutes : Routes =[
@@ -34,6 +34,7 @@ const appRoutes : Routes =[
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    MatSidenavModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCpcz4zxy3kX5Ao61RezEjKkjtOKs0t9-w'
