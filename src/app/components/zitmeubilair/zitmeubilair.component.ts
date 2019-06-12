@@ -1,6 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
-import { ZitmeubilairDataSource, ZitmeubilairItem } from './zitmeubilair-datasource';
+import { ZitmeubilairDataSource} from './zitmeubilair-datasource';
+import { ZitmeubilairService } from 'src/app/services/zitmeubilair.service';
+import { Zitmeubilair } from 'src/app/interface/zitmeubilair';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-zitmeubilair',
@@ -8,21 +14,36 @@ import { ZitmeubilairDataSource, ZitmeubilairItem } from './zitmeubilair-datasou
   styleUrls: ['./zitmeubilair.component.css']
 })
 export class ZitmeubilairComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<ZitmeubilairItem>;
+  @ViewChild(MatPaginator,{static :false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static :false}) sort: MatSort;
+  @ViewChild(MatTable,{static :false}) table: MatTable<Zitmeubilair>;
   dataSource: ZitmeubilairDataSource;
+  marker: [];
+
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['Straatnaam', 'Type_zitmeubel','Aanvulling'];
+
+  constructor(private zitmeubilairService : ZitmeubilairService, private breakpointObserver: BreakpointObserver, private router: Router){
+    this.marker = [];
+  }
 
   ngOnInit() {
-    this.dataSource = new ZitmeubilairDataSource();
+    this.dataSource = new ZitmeubilairDataSource(this.zitmeubilairService);
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  hondenloopMarkerPlaatsen(latitude: number, longitude: number){
+    localStorage.setItem('latitude',JSON.stringify(latitude));
+    localStorage.setItem('longitude',JSON.stringify(longitude))
   }
 }

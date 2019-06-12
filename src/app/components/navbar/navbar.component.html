@@ -1,14 +1,16 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer
-      class="sidenav"
-      fixedInViewport = "true"
+  <mat-sidenav 
+      #drawer 
+      class="sidenav" 
+      [ngClass]="{hidden: (isHandset$ | async)}"
+      fixedInViewport = "false"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item  [routerLink]="['/hondenloop']">Hondenloop</a>
-      <a mat-list-item [routerLink]="['/zitmeubilair']">Zitmeubilair</a>
+      <a mat-list-item routerLink="/hondenloop">Hondenpark</a>
+      <a mat-list-item routerLink="/zitmeubilair">Zitmeubilair</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,8 +23,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Just to keep myself busy</span>
+      <span>Progammeren 5 Project</span>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

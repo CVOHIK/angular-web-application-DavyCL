@@ -1,15 +1,25 @@
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8 data-table"  [ngClass]="{hidden: (isHandset$ | async)}">
   <table mat-table class="full-width-table" matSort aria-label="Elements">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    <!-- Straatnaam Column -->
+    <ng-container matColumnDef="Straatnaam">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  Straat + nummer</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button (click)="hondenloopMarkerPlaatsen(row.geometry.x, row.geometry.y)" >
+             {{row.attributes.Straatnaam}} {{row.attributes.Huisnummer}}
+        </button>
+      </td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    <!-- Type_zitmeubel Column -->
+    <ng-container matColumnDef="Type_zitmeubel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+      <td mat-cell *matCellDef="let row">{{row.attributes.Type_zitmeubel}}</td>
+    </ng-container>
+
+    <!-- Aanvulling Column -->
+    <ng-container matColumnDef="Aanvulling">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Commentaar</th>
+        <td mat-cell *matCellDef="let row">{{row.attributes.Aanvulling}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -19,7 +29,7 @@
   <mat-paginator #paginator
       [length]="dataSource?.data.length"
       [pageIndex]="0"
-      [pageSize]="50"
+      [pageSize]="10"
       [pageSizeOptions]="[25, 50, 100, 250]">
   </mat-paginator>
 </div>

@@ -1,48 +1,58 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AgmCoreModule } from '@agm/core'
+import { NgModule, Component } from '@angular/core';
+import { AgmCoreModule } from '@agm/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from './components/map/map.component';
+import { HondenloopService } from './services/hondenloop.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatButton, MatSelectModule, MatOptionModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { AppRoutingModule } from './app.routing';
+import { ZitmeubilairService } from './services/zitmeubilair.service';
 import { HondenloopComponent } from './components/hondenloop/hondenloop.component';
 import { ZitmeubilairComponent } from './components/zitmeubilair/zitmeubilair.component';
-import { ZitmeubilairService } from './services/zitmeubilair.service';
-import { HondenloopService } from './services/hondenloop.service';
-import { Routes, RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { MatSortModule, MatTableModule, MatPaginatorModule, MatToolbarModule, MatSidenav, MatSidenavModule } from '@angular/material';
-import { NavbarComponent } from './components/navbar/navbar.component';
 
-const appRoutes : Routes =[
-  { path : 'home',component:MapComponent}
-]
+const appRoutes: Routes = [
+  {path: 'home', component: HondenloopComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
+    NavbarComponent,
     HondenloopComponent,
-    ZitmeubilairComponent,
-    NavbarComponent
+    ZitmeubilairComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    AppRoutingModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatTableModule,
-    MatSidenavModule,
-    RouterModule.forRoot(appRoutes),
+    BrowserModule,
+    BrowserAnimationsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCpcz4zxy3kX5Ao61RezEjKkjtOKs0t9-w'
-    })
+    }),
+    MatSelectModule,
+    MatOptionModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'}),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
+    HondenloopService,
     ZitmeubilairService,
-    HondenloopService
+    HttpClient
   ],
   bootstrap: [AppComponent]
 })
