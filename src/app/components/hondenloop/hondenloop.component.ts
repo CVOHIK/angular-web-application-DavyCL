@@ -24,7 +24,7 @@ export class HondenloopComponent implements AfterViewInit, OnInit {
   );
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['NAAM', 'BEZOEKERSAANTAL','RINGS','ALGEMEEN_UITZICHT', 'NETHEID','VERLICHTING','QUOTERING_ALGEMEEN']; 
+  displayedColumns = ['NAAM', 'BEZOEKERSAANTAL','ALGEMEEN_UITZICHT', 'NETHEID','VERLICHTING','QUOTERING_ALGEMEEN']; 
   
   constructor(private hondenService : HondenloopService, private breakpointObserver : BreakpointObserver) {}
 

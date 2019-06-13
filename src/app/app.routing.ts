@@ -4,8 +4,7 @@ import { HondenloopComponent } from './components/hondenloop/hondenloop.componen
 import { ZitmeubilairComponent } from './components/zitmeubilair/zitmeubilair.component';
 import { NgModule } from '@angular/core';
 
-const APP_ROUTES: Routes = [
-    {path: '', component:MapComponent},
+const APP_ROUTES: Routes = [    
     {path: 'hondenloop', component:HondenloopComponent},
     {path: 'zitmeubilair', component:ZitmeubilairComponent}
 ];

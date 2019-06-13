@@ -75,7 +75,6 @@ export class HondenloopDataSource extends DataSource<Hondenloop>{
       switch (this.sort.active) {
         case 'NAAM': return compare(a.NAAM, b.NAAM, isAsc);
         case 'BEZOEKERSAANTAL': return compare(a.BEZOEKERSAANTAL, b.BEZOEKERSAANTAL, isAsc);
-        case 'RINGS': return compare(+a.Lat, +b.lng, isAsc);
         case 'AlGEMEEN_UITZICHT': return compare(a.ALGEMEEN_UITZICHT, b.ALGEMEEN_UITZICHT, isAsc);
         case 'NETHEID': return compare(a.NETHEID, b.NETHEID, isAsc);
         case 'VERLICHTING': return compare(a.VERLICHTING, b.VERLICHTING, isAsc);
