@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Zitmeubilair } from '../interface/zitmeubilair';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +14,12 @@ export class ZitmeubilairService {
   zitmeubilair : Zitmeubilair[];
   latitude: number;
   longitude: number;
-  marker: [];
+  marker: Array<{latitude: number, longitude : number}> = [];
+  
+  
 
   constructor(private http : HttpClient) { 
     this.zitmeubilair = [];
-    this.marker = [];
   }
 
   getZitMeubilair() : Observable<Zitmeubilair[]>{
@@ -29,11 +31,15 @@ export class ZitmeubilairService {
     );
   }
 
-  getMarkerlat(): number{
-    return +localStorage.getItem('latitude');
-   
+  getZitmeubilairMarker(): any{
+    this.marker.pop()
+    this.marker.push({latitude : +localStorage.getItem('latitude'), longitude: +localStorage.getItem('longitude')});
+    return this.marker;
   }
-  getMarklong():number{
-    return +localStorage.getItem('longitude');
+ 
+
+  setZitmeubilairMarker(latitude: number, longitude: number){
+    localStorage.setItem('latitude', latitude.toString())
+    localStorage.setItem('longitude', longitude.toString())
   }
 }

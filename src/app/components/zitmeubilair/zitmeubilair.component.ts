@@ -42,8 +42,7 @@ export class ZitmeubilairComponent implements AfterViewInit, OnInit {
     this.table.dataSource = this.dataSource;
   }
 
-  hondenloopMarkerPlaatsen(latitude: number, longitude: number){
-    localStorage.setItem('latitude',JSON.stringify(latitude));
-    localStorage.setItem('longitude',JSON.stringify(longitude))
+  ZitmeubilairMarkerPlaatsen(latitude: number, longitude: number){
+    this.zitmeubilairService.setZitmeubilairMarker(latitude,longitude);
   }
 }

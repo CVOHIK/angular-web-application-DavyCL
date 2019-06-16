@@ -1,7 +1,15 @@
-<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom"  (mapClick)="OnChosenLocation($event)">
-    <agm-marker
-     [latitude]="latitude"
-     [longitude]="longitude"
-     *ngIf="locationChosen">
-    </agm-marker>
-</agm-map>
+<div  class="container-fluid">
+        <div class="row">
+            <button mat-button (click)="ZitmeubilairMarkerPlaatsen()">ZitmeubilairMarker</button>
+            <button mat-button (click)="HondenloopMarkerPlaatsen()">HondenloopMarker</button>
+        </div>
+        <div class="row">
+                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+                        <agm-marker *ngFor= "let marker of markers"
+                         latitude= "{{marker.latitude}}"
+                         longitude="{{marker.longitude}}">
+                        </agm-marker>
+                </agm-map> 
+        </div>
+</div>
+ 

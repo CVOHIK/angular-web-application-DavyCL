@@ -1,9 +1,13 @@
-<div class="mat-elevation-z8" [ngClass]="{hidden: (isHandset$ | async)}">
+<div class="mat-elevation-z8 data-table" [ngClass]="{hidden: (isHandset$ | async)}">
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- NAAM Column -->
     <ng-container matColumnDef="NAAM">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-      <td mat-cell *matCellDef="let row">{{row.attributes.NAAM}}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Plaats</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button (click)="hondenloopMarkerPlaatsen(row.geometry.rings)">
+          {{row.attributes.NAAM}}
+     </button>
+      </td>
     </ng-container>
 
     <!-- BEZOEKERSAANTAL Column -->

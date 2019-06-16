@@ -38,4 +38,8 @@ export class HondenloopComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;    
   }
 
+  hondenloopMarkerPlaatsen(rings: string){
+    this.hondenService.setHondenloopMarkerrings(rings)
+  }
+
 }
