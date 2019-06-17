@@ -1,9 +1,10 @@
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
+import { DataSource  } from '@angular/cdk/collections';
+import { MatPaginator, MatSort} from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Zitmeubilair } from 'src/app/interface/zitmeubilair';
 import { ZitmeubilairService } from 'src/app/services/zitmeubilair.service';
+
 
 
 /**
@@ -11,7 +12,7 @@ import { ZitmeubilairService } from 'src/app/services/zitmeubilair.service';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ZitmeubilairDataSource extends DataSource<Zitmeubilair> {
+export class ZitmeubilairDataSource extends DataSource <Zitmeubilair> {
   data: Zitmeubilair[];
   paginator: MatPaginator;
   sort: MatSort;
@@ -21,6 +22,7 @@ export class ZitmeubilairDataSource extends DataSource<Zitmeubilair> {
     this.data= [];
     this.getZitmeubilair();
   }
+
 
   /**
    * Connect this data source to the table. The table will only update when
@@ -40,12 +42,14 @@ export class ZitmeubilairDataSource extends DataSource<Zitmeubilair> {
       return this.getPagedData(this.getSortedData([...this.data]));
     }));
   }
+  
 
   getZitmeubilair() : void{
     this.zitmeubilairService.getZitMeubilair().subscribe(zitmeubilair =>{
       this.data = zitmeubilair;
     })
   }
+ 
 
   /**
    *  Called when the table is being destroyed. Use this function, to clean up

@@ -14,11 +14,11 @@ export class MapComponent implements OnInit {
   maplatitude: number = 51.2194475;
   maplongitude:number = 4.4024643;
 
-  rings: Array<{lat:number,lng: number}>;
+ /*  rings: Array<{lat:number,lng: number}>; */
   zoom: number = 13;
   locationChosen = false;
   
-  lngA:number = 4.433205316172584;
+/*   lngA:number = 4.433205316172584;
   latA:number = 51.19369285717645;
   lngB:number = 4.432964157094027;
   latB:number = 51.19352268416171;
@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
   lngG:number = 4.4327957909001405;
   latG:number = 51.19351198224679;
   lngH:number = 4.432926783827302;
-  latH:number = 51.19382494157612;
+  latH:number = 51.19382494157612; */
 
   constructor(private hondenloopService: HondenloopService, private zitMeubilairService: ZitmeubilairService) {    
    }   
@@ -43,8 +43,8 @@ export class MapComponent implements OnInit {
     this.maplongitude = 4.4024643; */
     this.latitude = this.zitMeubilairService.lat;
     this.longitude = this.zitMeubilairService.lng;
-    this.rings = this.hondenloopService.rings;
-    console.log(this.rings);
+    /* this.rings = this.hondenloopService.rings;
+    console.log(this.rings); */
     this.zoom; 
   }
 

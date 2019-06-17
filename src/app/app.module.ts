@@ -8,13 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapComponent } from './components/map/map.component';
 import { HondenloopService } from './services/hondenloop.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { MatButton, MatSelectModule, MatOptionModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatButton, MatSelectModule, MatOptionModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AppRoutingModule } from './app.routing';
 import { ZitmeubilairService } from './services/zitmeubilair.service';
 import { HondenloopComponent } from './components/hondenloop/hondenloop.component';
 import { ZitmeubilairComponent } from './components/zitmeubilair/zitmeubilair.component';
+
 
 const appRoutes: Routes = [
   {path: '', component:ZitmeubilairComponent},
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'}),
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule  
+    
   ],
   providers: [
     HondenloopService,

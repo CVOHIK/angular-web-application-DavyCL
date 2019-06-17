@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator, MatSort, MatTable } from '@angular/material';
+import { MatPaginator, MatSort, MatTable, } from '@angular/material';
 import { ZitmeubilairDataSource} from './zitmeubilair-datasource';
 import { ZitmeubilairService } from 'src/app/services/zitmeubilair.service';
 import { Zitmeubilair } from 'src/app/interface/zitmeubilair';
@@ -49,5 +49,5 @@ export class ZitmeubilairComponent implements AfterViewInit, OnInit {
     this.zitmeubilairService.lat = lat;
     this.zitmeubilairService.lng = lng;
     this.router.navigate(["/map"])
-  }
+  } 
 }
