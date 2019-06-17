@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTable } from '@angular/material';
 import { ZitmeubilairDataSource} from './zitmeubilair-datasource';
 import { ZitmeubilairService } from 'src/app/services/zitmeubilair.service';
@@ -17,6 +17,9 @@ export class ZitmeubilairComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator,{static :false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static :false}) sort: MatSort;
   @ViewChild(MatTable,{static :false}) table: MatTable<Zitmeubilair>;
+  @Input() latitude: number;
+  @Input() longitude: number;
+
   dataSource: ZitmeubilairDataSource;
   marker: [];
 
@@ -42,7 +45,9 @@ export class ZitmeubilairComponent implements AfterViewInit, OnInit {
     this.table.dataSource = this.dataSource;
   }
 
-  ZitmeubilairMarkerPlaatsen(latitude: number, longitude: number){
-    this.zitmeubilairService.setZitmeubilairMarker(latitude,longitude);
+  ZitmeubilairMarkerPlaatsen(lat:number, lng:number){    
+    this.zitmeubilairService.lat = lat;
+    this.zitmeubilairService.lng = lng;
+    this.router.navigate(["/map"])
   }
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +17,10 @@ import { HondenloopComponent } from './components/hondenloop/hondenloop.componen
 import { ZitmeubilairComponent } from './components/zitmeubilair/zitmeubilair.component';
 
 const appRoutes: Routes = [
-  {path: 'home', component: HondenloopComponent}
+  {path: '', component:ZitmeubilairComponent},
+  {path: 'home', component: ZitmeubilairComponent}
 ];
+
 
 @NgModule({
   declarations: [

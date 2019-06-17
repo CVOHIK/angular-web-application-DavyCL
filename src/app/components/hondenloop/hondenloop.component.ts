@@ -6,6 +6,7 @@ import { HondenloopService } from 'src/app/services/hondenloop.service';
 import { BreakpointObserver,Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hondenloop',
@@ -26,7 +27,7 @@ export class HondenloopComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['NAAM', 'BEZOEKERSAANTAL','ALGEMEEN_UITZICHT', 'NETHEID','VERLICHTING','QUOTERING_ALGEMEEN']; 
   
-  constructor(private hondenService : HondenloopService, private breakpointObserver : BreakpointObserver) {}
+  constructor(private hondenService : HondenloopService, private breakpointObserver : BreakpointObserver,private router: Router) {}
 
   ngOnInit() {
     this.dataSource = new HondenloopDataSource(this.hondenService);
@@ -38,8 +39,9 @@ export class HondenloopComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;    
   }
 
-  hondenloopMarkerPlaatsen(rings: string){
-    this.hondenService.setHondenloopMarkerrings(rings)
+  hondenloopMarkerPlaatsen(rings: []){
+    this.hondenService.rings = rings
+    this.router.navigate(["/map"])
   }
 
 }

@@ -12,14 +12,12 @@ import { HttpClient } from '@angular/common/http';
 export class ZitmeubilairService {
 
   zitmeubilair : Zitmeubilair[];
-  latitude: number;
-  longitude: number;
-  marker: Array<{latitude: number, longitude : number}> = [];
-  
-  
+  lat: number;
+  lng: number;
+   
 
   constructor(private http : HttpClient) { 
-    this.zitmeubilair = [];
+    
   }
 
   getZitMeubilair() : Observable<Zitmeubilair[]>{
@@ -29,17 +27,5 @@ export class ZitmeubilairService {
         return res["features"];
       })
     );
-  }
-
-  getZitmeubilairMarker(): any{
-    this.marker.pop()
-    this.marker.push({latitude : +localStorage.getItem('latitude'), longitude: +localStorage.getItem('longitude')});
-    return this.marker;
-  }
- 
-
-  setZitmeubilairMarker(latitude: number, longitude: number){
-    localStorage.setItem('latitude', latitude.toString())
-    localStorage.setItem('longitude', longitude.toString())
   }
 }

@@ -1,15 +1,30 @@
 <div  class="container-fluid">
         <div class="row">
-            <button mat-button (click)="ZitmeubilairMarkerPlaatsen()">ZitmeubilairMarker</button>
-            <button mat-button (click)="HondenloopMarkerPlaatsen()">HondenloopMarker</button>
-        </div>
-        <div class="row">
-                <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-                        <agm-marker *ngFor= "let marker of markers"
-                         latitude= "{{marker.latitude}}"
-                         longitude="{{marker.longitude}}">
+                <agm-map [latitude]="maplatitude" [longitude]="maplongitude" [zoom]="zoom" (mapClick)=gekozenLocatie($event)>
+                        <agm-marker 
+                        [latitude]="latitude"
+                        [longitude]="longitude">
                         </agm-marker>
-                </agm-map> 
+                        <agm-polyline>
+                                <agm-polyline-point latitude="{{latA}}" longitude="{{lngA}}">
+                                </agm-polyline-point>
+                                <agm-polyline-point latitude="{{latB}}" longitude="{{lngB}}">
+                                </agm-polyline-point>
+                                <agm-polyline-point latitude="{{latC}}" longitude="{{lngC}}">
+                                </agm-polyline-point>
+                                <agm-polyline-point latitude="{{latD}}" longitude="{{lngD}}">
+                                </agm-polyline-point>
+                                <agm-polyline-point latitude="{{latE}}" longitude="{{lngE}}">
+                                </agm-polyline-point>
+                                <agm-polyline-point latitude="{{latF}}" longitude="{{lngF}}">
+                                </agm-polyline-point>
+                                <agm-polyline-point latitude="{{latG}}" longitude="{{lngG}}">
+                                </agm-polyline-point>
+                                <agm-polyline-point latitude="{{latH}}" longitude="{{lngH}}">
+                                </agm-polyline-point>
+                        </agm-polyline>
+                </agm-map>
+               
         </div>
 </div>
  
