@@ -23,7 +23,7 @@ export class HondenloopService {
     return this.http.get<[Hondenloop]>(UrlConfig.hondenUrl)
     .pipe(map((res) => {        
         this.hondenlopen = res["features"]
-        //console.log(this.hondenlopen)
+        console.log(this.hondenlopen)
         return res["features"];
       })
     );
